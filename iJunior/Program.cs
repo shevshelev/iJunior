@@ -4,19 +4,15 @@ class Program
 {
     static void Main(string[] args)
     {
-        int goldPrice = 10;
+        int minutesInHour = 60; 
+        int timePerPatient = 10;
 
-        Console.WriteLine("Сколько у вас золота?");
-        int numbersOfGold = Convert.ToUInt16(Console.ReadLine());
+        Console.WriteLine("Введите количество пациентов перед вами:");
+        int totalTime = Convert.ToUInt16(Console.ReadLine()) * timePerPatient;
 
-        Console.WriteLine($"Один кристалл стоит {goldPrice} золота, сколько хотите купить?");
-        int numbersOfCristall = Convert.ToUInt16(Console.ReadLine());
+        int numberOfHour = totalTime / minutesInHour;
+        int remainingMinutes = totalTime % minutesInHour;
 
-        int orderPrice = numbersOfCristall * goldPrice;
-        int purchasedСrystals = Convert.ToUInt16(numbersOfGold >= orderPrice) * numbersOfCristall;
-        int remainingGold = numbersOfGold % orderPrice;
-
-        Console.WriteLine($"Вы купили {purchasedСrystals} кристаллов и у вас осталось {remainingGold} золота");
+        Console.WriteLine($"Вам осталось ждать {numberOfHour} часов и {remainingMinutes} минут");
     }
 }
-
