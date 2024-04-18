@@ -4,19 +4,18 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Введите первое значение");
-        string firstValue = Console.ReadLine();
+        int goldPrice = 10;
 
-        Console.WriteLine("Введите второе значение");
-        string secondValue = Console.ReadLine();
+        Console.WriteLine("Сколько у вас золота?");
+        int numbersOfGold = Convert.ToUInt16(Console.ReadLine());
 
-        Console.WriteLine($"Вы ввели: {firstValue} и {secondValue}");
+        Console.WriteLine($"Один кристалл стоит {goldPrice} золота, сколько хотите купить?");
+        int numbersOfCristall = Convert.ToUInt16(Console.ReadLine());
 
-        string var = firstValue;
-        firstValue = secondValue;
-        secondValue = var;
+        int orderPrice = numbersOfCristall * goldPrice;
+        int canBuy = Convert.ToUInt16(numbersOfGold >= orderPrice);
 
-        Console.WriteLine($"Мы пометяли: {firstValue} и {secondValue}");
+        Console.WriteLine($"Вы купили {canBuy * numbersOfCristall} кристаллов и у вас осталось {numbersOfGold % orderPrice} золота");
     }
 }
 
