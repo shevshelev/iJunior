@@ -4,10 +4,19 @@ class Program
 {
     static void Main(string[] args)
     {
-        int imagesInRow = 3;
-        int numbersOfImages = 52;
+        Console.WriteLine("Введите первое значение");
+        string firstValue = Console.ReadLine();
 
-        Console.WriteLine($"Количество рядов по 3 картины: {numbersOfImages / imagesInRow} \nКартин сверх меры: {numbersOfImages % imagesInRow}");
+        Console.WriteLine("Введите второе значение");
+        string secondValue = Console.ReadLine();
+
+        Console.WriteLine($"Вы ввели: {firstValue} и {secondValue}");
+
+        string var = firstValue;
+        firstValue = secondValue;
+        secondValue = var;
+
+        Console.WriteLine($"Мы пометяли: {firstValue} и {secondValue}");
     }
 }
 
