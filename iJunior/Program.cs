@@ -13,9 +13,10 @@ class Program
         int numbersOfCristall = Convert.ToUInt16(Console.ReadLine());
 
         int orderPrice = numbersOfCristall * goldPrice;
-        int canBuy = Convert.ToUInt16(numbersOfGold >= orderPrice);
+        int purchasedСrystals = Convert.ToUInt16(numbersOfGold >= orderPrice) * numbersOfCristall;
+        int remainingGold = numbersOfGold % orderPrice;
 
-        Console.WriteLine($"Вы купили {canBuy * numbersOfCristall} кристаллов и у вас осталось {numbersOfGold % orderPrice} золота");
+        Console.WriteLine($"Вы купили {purchasedСrystals} кристаллов и у вас осталось {remainingGold} золота");
     }
 }
 
