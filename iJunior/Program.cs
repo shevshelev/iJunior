@@ -5,6 +5,7 @@ class Program
     static void Main(string[] args)
     {
         string message;
+        int repeatCounter;
 
         Console.WriteLine("Введите сообщение");
 
@@ -12,7 +13,9 @@ class Program
 
         Console.WriteLine("Введите количество повторений");
 
-        for (int repeatCounter = Convert.ToInt32(Console.ReadLine()), repeatCounter > 0, repeatCounter--) {
+        repeatCounter = Convert.ToInt32(Console.ReadLine());
+
+        for (int i = repeatCounter; i > 0; i--) {
             Console.WriteLine(message);
         }
     }
