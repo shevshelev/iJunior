@@ -4,13 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        string message = "";
-        string exitMessage = "exit";
+        int minNumber = 5;
+        int maxNumber = 103;
+        int stepNumber = 7;
 
-        while (message !=  exitMessage) {
-            Console.WriteLine("Для выхода введие \"exit\" ");
-            
-            message = Console.ReadLine();
+        for (int currentNumber = minNumber; currentNumber <= maxNumber; currentNumber += stepNumber) {
+            Console.WriteLine(currentNumber);
         }
     }
 }
