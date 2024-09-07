@@ -4,12 +4,17 @@ class Program
 {
     static void Main(string[] args)
     {
-        int minNumber = 5;
-        int maxNumber = 103;
-        int stepNumber = 7;
+        Random rand = new Random();
+        int number = rand.Next(0, 100);
+        int sum = 0;
 
-        for (int currentNumber = minNumber; currentNumber <= maxNumber; currentNumber += stepNumber) {
-            Console.WriteLine(currentNumber);
+
+        for (int i = 0; i <= number; i++) {
+            if (i % 3 == 0 || i % 5 == 0) {
+                sum += i;
+            }
         }
+
+        Console.WriteLine(sum);
     }
 }
