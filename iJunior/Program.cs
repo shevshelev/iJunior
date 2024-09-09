@@ -4,20 +4,66 @@ class Program
 {
     static void Main(string[] args)
     {
-        Random random = new Random();
-        int minimum = 0;
-        int maximum = 100;
-        int firstDivider = 3;
-        int secondDivider = 5;
-        int number = random.Next(minimum, maximum);
-        int sum = 0;
+        const string CommandShowGreeting = "1";
+        const string CommandShowGoodbay = "2";
+        const string CommandShowRandomNumber = "3";
+        const string CommandClean = "4";
+        const string CommandExit = "5";
 
-        for (int i = 0; i <= number; i++) {
-            if (i % firstDivider == 0 || i % secondDivider == 0) {
-                sum += i;
+        const string commandsText = "Available commands:";
+        const string greetingText = "Show greeting";
+        const string goodbayText = "Show goodbay";
+        const string randomNumberText = "Show random number";
+        const string cleanText = "Clean console";
+        const string exitTextCommand = "Exit";
+        const string enterCommand = "Enter command number:";
+
+        const string greeting = "Hi There!!!";
+        const string goodbay = "Goodbay!";
+        const string exitText = "Program completed";
+        const string unknownCommand = "Unknown comand";
+        const int minLimitForRandomNumber = 0;
+        const int maxLimitForRandomNumber = 1000;
+
+        Random random= new Random();
+        bool isWork = true;
+        string userInput;
+
+        while (isWork) {
+            Console.WriteLine(commandsText);
+            Console.WriteLine($"{CommandShowGreeting}. {greetingText}");
+            Console.WriteLine($"{CommandShowGoodbay}. {goodbayText}");
+            Console.WriteLine($"{CommandShowRandomNumber}. {randomNumberText}");
+            Console.WriteLine($"{CommandClean}. {cleanText}");
+            Console.WriteLine($"{CommandExit}. {exitTextCommand}");
+            Console.WriteLine(enterCommand);
+
+            userInput = Console.ReadLine();
+
+            switch (userInput) {
+                case CommandShowGreeting:
+                    Console.WriteLine(greeting);
+                    break;
+                case CommandShowGoodbay:
+                    Console.WriteLine(goodbay);
+                    break;
+                case CommandShowRandomNumber:
+                    int number = random.Next(minLimitForRandomNumber, maxLimitForRandomNumber);
+                    Console.WriteLine(number);
+                    break;
+                case CommandClean:
+                    Console.Clear();
+                    break;
+                case CommandExit:
+                    isWork = false;
+                    Console.WriteLine(exitText);
+                    break;
+                default:
+                    Console.WriteLine(unknownCommand);
+                    break;
             }
         }
 
-        Console.WriteLine(sum);
+        Console.ReadKey();
     }
 }
