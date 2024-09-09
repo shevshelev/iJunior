@@ -10,20 +10,20 @@ class Program
         const string CommandClean = "4";
         const string CommandExit = "5";
 
-        const string commandsText = "Available commands:";
-        const string greetingText = "Show greeting";
-        const string goodbayText = "Show goodbay";
-        const string randomNumberText = "Show random number";
-        const string cleanText = "Clean console";
-        const string exitTextCommand = "Exit";
-        const string enterCommand = "Enter command number:";
+        string commandsText = "Available commands:";
+        string greetingText = "Show greeting";
+        string goodbayText = "Show goodbay";
+        string randomNumberText = "Show random number";
+        string cleanText = "Clean console";
+        string exitTextCommand = "Exit";
+        string enterCommand = "Enter command number:";
 
-        const string greeting = "Hi There!!!";
-        const string goodbay = "Goodbay!";
-        const string exitText = "Program completed";
-        const string unknownCommand = "Unknown comand";
-        const int minLimitForRandomNumber = 0;
-        const int maxLimitForRandomNumber = 1000;
+        string greeting = "Hi There!!!";
+        string goodbay = "Goodbay!";
+        string exitText = "Program completed";
+        string unknownCommand = "Unknown comand";
+        int minLimitForRandomNumber = 0;
+        int maxLimitForRandomNumber = 1000;
 
         Random random= new Random();
         bool isWork = true;
