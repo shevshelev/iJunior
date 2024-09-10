@@ -4,35 +4,18 @@ class Program
 {
     static void Main(string[] args)
     {
-        int userInput;
-        
-        int minNumber = 10;
-        int maxNumber = 25;
-        int minLimit = 50;
-        int maxLimit = 150;
-        int counter = 0;
-        string greetingMessage = $"Please enter a number between 10 and 25.";
-        string errorMessage = "The entered value is incorrect";
+        int baseNumber = 2;
+        int degree = 0;
+        int resultNumber = 1;
+        Random random = new Random();
+        int targetNumber = random.Next(0, 2_000_000_000);
 
-        Console.WriteLine(greetingMessage);
-
-        userInput = Convert.ToInt32(Console.ReadLine());
-
-        if (userInput >= minNumber && userInput <=  maxNumber)
+        while (resultNumber < targetNumber)
         {
-            for (int i = 0; i <= maxLimit; i += userInput)
-            {
-                if (i >= minLimit)
-                {
-                    counter++;
-                }
-            }
+            degree += 1;
+            resultNumber *= baseNumber;
+        }
 
-            Console.WriteLine($"Answer: {counter}");
-        }
-        else
-        {
-            Console.WriteLine(errorMessage);
-        }
+        Console.WriteLine($"Target number: {targetNumber}. ResultNumer: {resultNumber}. Degree: {degree} ");
     }
 }
