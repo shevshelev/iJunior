@@ -5,11 +5,8 @@ class Program
     static void Main(string[] args)
     {
         string name;
-        string symbol;
-        int totalSymbolsInString;
-
-        string outerLine = String.Empty;
-        int nuberOfAdditionSymbols = 2;
+        char symbol;
+        string outerLine;
 
         Console.WriteLine("Please enter name");
 
@@ -17,10 +14,10 @@ class Program
 
         Console.WriteLine("Please enter symbol");
 
-        symbol = Console.ReadLine();
+        symbol = Console.ReadKey(true).KeyChar;
+        outerLine = Convert.ToString(symbol);
 
-        totalSymbolsInString = name.Length + nuberOfAdditionSymbols;
-        for (int i = 1; i <= totalSymbolsInString; i++) {
+        for (int i = 0; i <= name.Length; i++) {
             outerLine += symbol;
         }
 
