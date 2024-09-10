@@ -4,25 +4,32 @@ class Program
 {
     static void Main(string[] args)
     {
-        string name;
-        char symbol;
-        string outerLine;
+        string userInput;
+        int attemptsNumber = 3;
+        int currentAttempt = 0;
+        string passsword = "SomePassword";
+        string secretMessage = "You are amazing!";
+        string greetingMessage = "Please enter password";
+        string incorrectMessage = "Password is incorrect. Please try again.";
 
-        Console.WriteLine("Please enter name");
+        while (currentAttempt < attemptsNumber)
+        {
+            Console.WriteLine(greetingMessage);
 
-        name = Console.ReadLine();
+            userInput = Console.ReadLine();
 
-        Console.WriteLine("Please enter symbol");
-
-        symbol = Console.ReadKey(true).KeyChar;
-        outerLine = Convert.ToString(symbol);
-
-        for (int i = 0; i <= name.Length; i++) {
-            outerLine += symbol;
+            if (userInput == passsword)
+            {
+                Console.WriteLine(secretMessage);
+                break;
+            } 
+            else 
+            {
+                currentAttempt += 1;
+                Console.WriteLine(incorrectMessage);
+                Console.WriteLine($"You have {attemptsNumber - currentAttempt} attempts left.");
+                continue;
+            }
         }
-
-        Console.WriteLine(outerLine);
-        Console.WriteLine($"{symbol}{name}{symbol}");
-        Console.WriteLine(outerLine);
     }
 }
