@@ -4,31 +4,35 @@ class Program
 {
     static void Main(string[] args)
     {
-        string userInput;
+        int userInput;
         
-        int attemptsNumber = 3;
-        string passsword = "SomePassword";
-        string secretMessage = "You are amazing!";
-        string greetingMessage = "Please enter password";
-        string incorrectMessage = "Password is incorrect. Please try again.";
+        int minNumber = 10;
+        int maxNumber = 25;
+        int minLimit = 50;
+        int maxLimit = 150;
+        int counter = 0;
+        string greetingMessage = $"Please enter a number between 10 and 25.";
+        string errorMessage = "The entered value is incorrect";
 
-        for (int currentAttempt = 1; currentAttempt <= attemptsNumber; currentAttempt++)
+        Console.WriteLine(greetingMessage);
+
+        userInput = Convert.ToInt32(Console.ReadLine());
+
+        if (userInput >= minNumber && userInput <=  maxNumber)
         {
-            Console.WriteLine(greetingMessage);
-
-            userInput = Console.ReadLine();
-
-            if (userInput == passsword)
+            for (int i = 0; i <= maxLimit; i += userInput)
             {
-                Console.WriteLine(secretMessage);
-                break;
-            } 
-            else 
-            {
-                Console.WriteLine(incorrectMessage);
-                Console.WriteLine($"You have {attemptsNumber - currentAttempt} attempts left.");
-                continue;
+                if (i >= minLimit)
+                {
+                    counter++;
+                }
             }
+
+            Console.WriteLine($"Answer: {counter}");
+        }
+        else
+        {
+            Console.WriteLine(errorMessage);
         }
     }
 }
