@@ -67,6 +67,7 @@ class Program
         Console.WriteLine($"{AttackCommand}. {simpleAttackText}");
         Console.WriteLine($"{FireBallCommand}. {fireBallText}");
         Console.WriteLine($"{TreatmentCommand}. {treatmentText}");
+
         if (canUseExplosion) {
             Console.WriteLine($"{ExplosionCommand}. {explosionText}");
         }
@@ -76,6 +77,7 @@ class Program
         switch (userInput)
         {
             case AttackCommand:
+
                 heroAttack = random.Next(minHeroAttack, maxHeroAttack);
                 bossHelth -= heroAttack;
                 canUseExplosion = false;
@@ -85,6 +87,7 @@ class Program
 
                 break;
             case FireBallCommand:
+
                 if (heroMana > fireBallCost)
                 {
                     heroAttack = random.Next(minFireBallAttack, maxFireBallAttack);
@@ -102,9 +105,10 @@ class Program
                 {
                     Console.WriteLine(notEnoughManaText);
                     Console.ReadKey();
-                    continue;
                 } 
+                break;
             case TreatmentCommand:
+
                 if (heroMana > treatmentCost)
                 {
                     heroAttack = random.Next(minHealthRestored, maxHealthRestored);
@@ -125,17 +129,17 @@ class Program
                     Console.ReadKey();
                     }
                     canUseExplosion = false;
-
-                    break;
                 } 
                 else
                 {
                     Console.WriteLine(notEnoughManaText);
                     Console.ReadKey();
-                    continue;
-                } 
+                }
+                break;
             case ExplosionCommand:
-                if (canUseExplosion) {
+
+                if (canUseExplosion)
+                {
                     if (heroMana > explosionCost) 
                     {
                         heroAttack = random.Next(minExplosionAttack, maxExplosionAttack);
@@ -152,19 +156,19 @@ class Program
                     {
                         Console.WriteLine(notEnoughManaText);
                         Console.ReadKey();
-                        continue;
+                        break;
                     }
                 }
                 else
                 {
                     Console.WriteLine(unkownCommandText);
                     Console.ReadKey();
-                    continue;
+                    break;
                 }
             default:
                 Console.WriteLine(unkownCommandText);
                 Console.ReadKey();
-                continue;
+                break;
         }
 
         bossAttack = random.Next(minBossAttack, maxBossAttack);
