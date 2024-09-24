@@ -9,22 +9,12 @@ class Program
         const string TreatmentCommand = "3";
         const string ExplosionCommand = "4";
 
-        string fightText = "FIGHT!";
-        string nextAttackText = "Chouse your next step:";
-        string simpleAttackText = "Use simple attack.";
-        string fireBallText = "Use fire ball. After that you can use explosion.";
-        string treatmentText = "Restore some health.";
-        string explosionText = "Now you can use explosion. Let do it!";
-        string maxHealthText = "You have restored your health to maximum";
         string notEnoughManaText = "You don't have enough mana";
         string unkownCommandText = "Unknown command. Please try again.";
-        string drawText = "Draw!";
-        string heroWinText = "You win!";
-        string bossWinText = "Boss win!";
 
         Random random = new Random();
-        int maxHeroHelth = 240;
-        int minHeroHelth = 150;
+        int maxHeroHealth = 240;
+        int minHeroHealth = 150;
         int maxHeroMana = 100;
         int minHeroMana = 50;
         int maxBossHelth = 300;
@@ -45,12 +35,12 @@ class Program
         int minTreatmentCost = 5;
         int maxBossAttack = 150;
         int minBossAttack = 75;
-        int heroHelth = random.Next(minHeroHelth, maxHeroHelth++);
-        int heroMana = random.Next(minHeroMana, maxHeroMana++);
-        int bossHelth = random.Next(minBossHelth, maxBossHelth++);
-        int fireBallCost = random.Next(minFireBallCost, maxFireBallCost++);
-        int explosionCost = random.Next(minExplosionCost, maxExplosionCost++);
-        int treatmentCost = random.Next(minTreatmentCost, maxTreatmentCost++);
+        int heroHealth = random.Next(minHeroHealth, maxHeroHealth + 1);
+        int heroMana = random.Next(minHeroMana, maxHeroMana + 1);
+        int bossHelth = random.Next(minBossHelth, maxBossHelth + 1);
+        int fireBallCost = random.Next(minFireBallCost, maxFireBallCost + 1);
+        int explosionCost = random.Next(minExplosionCost, maxExplosionCost + 1);
+        int treatmentCost = random.Next(minTreatmentCost, maxTreatmentCost + 1);
 
         bool canUseExplosion = false;
 
@@ -58,18 +48,18 @@ class Program
         int heroAttack;
         string userInput;
 
-        while (bossHelth > 0 && heroHelth > 0)
+        while (bossHelth > 0 && heroHealth > 0)
         {
-            Console.WriteLine($"Your helth: {heroHelth}. Your mana: {heroMana} Boss helth: {bossHelth}");
-            Console.Write(fightText);
-            Console.WriteLine(nextAttackText);
-            Console.WriteLine($"{AttackCommand}. {simpleAttackText}");
-            Console.WriteLine($"{FireBallCommand}. {fireBallText}");
-            Console.WriteLine($"{TreatmentCommand}. {treatmentText}");
+            Console.WriteLine($"Your helth: {heroHealth}. Your mana: {heroMana} Boss helth: {bossHelth}");
+            Console.Write("FIGHT!");
+            Console.WriteLine("Chouse your next step:");
+            Console.WriteLine($"{AttackCommand}. Use simple attack.");
+            Console.WriteLine($"{FireBallCommand}. Use fire ball. After that you can use explosion.");
+            Console.WriteLine($"{TreatmentCommand}. Restore some health.");
 
             if (canUseExplosion)
             {
-                Console.WriteLine($"{ExplosionCommand}. {explosionText}");
+                Console.WriteLine($"{ExplosionCommand}. Now you can use explosion. Let do it!");
             }
 
             userInput = Console.ReadLine();
@@ -86,7 +76,7 @@ class Program
                     break;
 
                 case FireBallCommand:
-                    if (heroMana > fireBallCost)
+                    if (heroMana >= fireBallCost)
                     {
                         heroAttack = random.Next(minFireBallAttack, maxFireBallAttack);
                         heroMana -= fireBallCost;
@@ -103,22 +93,22 @@ class Program
                     break;
 
                 case TreatmentCommand:
-                    if (heroMana > treatmentCost)
+                    if (heroMana >= treatmentCost)
                     {
                         heroAttack = random.Next(minHealthRestored, maxHealthRestored);
                         heroMana -= treatmentCost;
 
-                        if ((heroHelth + heroAttack) < maxHeroHelth)
+                        if ((heroHealth + heroAttack) < maxHeroHealth)
                         {
-                            heroHelth += heroAttack;
+                            heroHealth += heroAttack;
 
                             Console.WriteLine($"You have restored {heroAttack} health");
                         }
                         else
                         {
-                            heroHelth = maxHeroHelth;
+                            heroHealth = maxHeroHealth;
 
-                            Console.WriteLine(maxHealthText);
+                            Console.WriteLine("You have restored your health to maximum");
                         }
 
                         canUseExplosion = false;
@@ -132,7 +122,7 @@ class Program
                 case ExplosionCommand:
                     if (canUseExplosion)
                     {
-                        if (heroMana > explosionCost)
+                        if (heroMana >= explosionCost)
                         {
                             heroAttack = random.Next(minExplosionAttack, maxExplosionAttack);
                             heroMana -= explosionCost;
@@ -160,23 +150,23 @@ class Program
             Console.ReadKey();
 
             bossAttack = random.Next(minBossAttack, maxBossAttack);
-            heroHelth -= bossAttack;
+            heroHealth -= bossAttack;
 
             Console.WriteLine($"The boss deals {bossAttack} damage to you");
             Console.ReadKey();
         }
 
-        if (heroHelth < 0 && bossHelth < 0)
+        if (heroHealth < 0 && bossHelth < 0)
         {
-            Console.WriteLine(drawText);
+            Console.WriteLine("Draw!");
         }
         else if (bossHelth < 0)
         {
-            Console.WriteLine(heroWinText);
+            Console.WriteLine("You win!");
         }
         else
         {
-            Console.WriteLine(bossWinText);
+            Console.WriteLine("Boss win!");
         }
 
         Console.ReadKey();
