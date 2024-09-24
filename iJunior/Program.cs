@@ -4,8 +4,6 @@ class Program
 {
     static void Main(string[] args)
     {
-    Random random = new Random();
-
     const string AttackCommand = "1";
     const string FireBallCommand = "2";
     const string TreatmentCommand = "3";
@@ -24,6 +22,7 @@ class Program
     string heroWinText = "You win!";
     string bossWinText = "Boss win!";
 
+    Random random = new Random();
     int maxHeroHelth = 241;
     int minHeroHelth = 150;
     int maxHeroMana = 101;
@@ -77,7 +76,6 @@ class Program
         switch (userInput)
         {
             case AttackCommand:
-
                 heroAttack = random.Next(minHeroAttack, maxHeroAttack);
                 bossHelth -= heroAttack;
                 canUseExplosion = false;
@@ -87,7 +85,6 @@ class Program
 
                 break;
             case FireBallCommand:
-
                 if (heroMana > fireBallCost)
                 {
                     heroAttack = random.Next(minFireBallAttack, maxFireBallAttack);
@@ -104,9 +101,9 @@ class Program
                     Console.WriteLine(notEnoughManaText);
                     Console.ReadKey();
                 } 
+
                 break;
             case TreatmentCommand:
-
                 if (heroMana > treatmentCost)
                 {
                     heroAttack = random.Next(minHealthRestored, maxHealthRestored);
@@ -133,9 +130,9 @@ class Program
                     Console.WriteLine(notEnoughManaText);
                     Console.ReadKey();
                 }
+
                 break;
             case ExplosionCommand:
-
                 if (canUseExplosion)
                 {
                     if (heroMana > explosionCost) 
@@ -159,10 +156,12 @@ class Program
                     Console.WriteLine(unkownCommandText);
                     Console.ReadKey();
                 }
-                    break;
+
+                break;
             default:
                 Console.WriteLine(unkownCommandText);
                 Console.ReadKey();
+
                 break;
         }
 
@@ -171,8 +170,8 @@ class Program
 
         Console.WriteLine($"The boss deals {bossAttack} damage to you");
         Console.ReadKey();
-
     }
+
     if (heroHelth < 0 && bossHelth < 0)
     {
         Console.WriteLine(drawText);
