@@ -67,7 +67,8 @@ class Program
         Console.WriteLine($"{FireBallCommand}. {fireBallText}");
         Console.WriteLine($"{TreatmentCommand}. {treatmentText}");
 
-        if (canUseExplosion) {
+        if (canUseExplosion)
+        {
             Console.WriteLine($"{ExplosionCommand}. {explosionText}");
         }
 
@@ -82,8 +83,8 @@ class Program
 
                 Console.WriteLine($"Dealt {heroAttack} damage to the boss");
                 Console.ReadKey();
-
                 break;
+                
             case FireBallCommand:
                 if (heroMana > fireBallCost)
                 {
@@ -94,15 +95,13 @@ class Program
                     canUseExplosion = true;
 
                     Console.WriteLine($"Dealt {heroAttack} damage to the boss");
-                    Console.ReadKey();
                 } 
                 else
                 {
                     Console.WriteLine(notEnoughManaText);
-                    Console.ReadKey();
                 } 
-
                 break;
+
             case TreatmentCommand:
                 if (heroMana > treatmentCost)
                 {
@@ -114,24 +113,22 @@ class Program
                     heroHelth += heroAttack;
 
                     Console.WriteLine($"You have restored {heroAttack} health");
-                    Console.ReadKey();
                     } 
                     else 
                     {
                     heroHelth = maxHeroHelth;
 
                     Console.WriteLine(maxHealthText);
-                    Console.ReadKey();
                     }
+
                     canUseExplosion = false;
                 } 
                 else
                 {
                     Console.WriteLine(notEnoughManaText);
-                    Console.ReadKey();
                 }
-
                 break;
+
             case ExplosionCommand:
                 if (canUseExplosion)
                 {
@@ -143,27 +140,24 @@ class Program
                         canUseExplosion = false;
 
                         Console.WriteLine($"Dealt {heroAttack} damage to the boss");
-                        Console.ReadKey();
                     }
                     else 
                     {
                         Console.WriteLine(notEnoughManaText);
-                        Console.ReadKey();
                     }
                 }
                 else
                 {
                     Console.WriteLine(unkownCommandText);
-                    Console.ReadKey();
                 }
-
                 break;
+
             default:
                 Console.WriteLine(unkownCommandText);
-                Console.ReadKey();
-
                 break;
         }
+
+        Console.ReadKey();
 
         bossAttack = random.Next(minBossAttack, maxBossAttack);
         heroHelth -= bossAttack;
