@@ -158,6 +158,7 @@ class Program
                 {
                     Console.WriteLine(unkownCommandText);
                     Console.ReadKey();
+                }
                     break;
             default:
                 Console.WriteLine(unkownCommandText);
