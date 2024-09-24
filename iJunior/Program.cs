@@ -1,4 +1,4 @@
-﻿namespace iJunior;
+namespace iJunior;
 
 class Program
 {
@@ -98,8 +98,6 @@ class Program
 
                     Console.WriteLine($"Dealt {heroAttack} damage to the boss");
                     Console.ReadKey();
-
-                    break;
                 } 
                 else
                 {
@@ -149,14 +147,11 @@ class Program
 
                         Console.WriteLine($"Dealt {heroAttack} damage to the boss");
                         Console.ReadKey();
-                        break;
-
                     }
                     else 
                     {
                         Console.WriteLine(notEnoughManaText);
                         Console.ReadKey();
-                        break;
                     }
                 }
                 else
